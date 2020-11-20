@@ -47,6 +47,18 @@ class FicheStock
      */
     private $observation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Materiels::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $materiel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PvReception::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pv;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +132,30 @@ class FicheStock
     public function setObservation(string $observation): self
     {
         $this->observation = $observation;
+
+        return $this;
+    }
+
+    public function getMateriel(): ?Materiels
+    {
+        return $this->materiel;
+    }
+
+    public function setMateriel(?Materiels $materiel): self
+    {
+        $this->materiel = $materiel;
+
+        return $this;
+    }
+
+    public function getPv(): ?PvReception
+    {
+        return $this->pv;
+    }
+
+    public function setPv(?PvReception $pv): self
+    {
+        $this->pv = $pv;
 
         return $this;
     }
