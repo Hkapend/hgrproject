@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <head>
+        {% block stylesheets %}
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -16,9 +15,9 @@
             <link rel="stylesheet" href="{{ asset("dist/css/adminlte.min.css") }}">
             <!-- Google Font: Source Sans Pro -->
             <link href="{{ asset("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700") }}" rel="stylesheet">
-        </head>
+        {% endblock %}
     </head>
-    <body>
+    <body class="main-content">
         {% block body %}{% endblock %}
         {% block javascripts %}
             <!-- jQuery -->

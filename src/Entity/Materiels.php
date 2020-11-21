@@ -37,6 +37,11 @@ class Materiels
      */
     private $activated;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Fournisseur::class)
+     */
+    private $fournisseur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Materiels
     public function setActivated(bool $activated): self
     {
         $this->activated = $activated;
+
+        return $this;
+    }
+
+    public function getFournisseur(): ?Fournisseur
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?Fournisseur $fournisseur): self
+    {
+        $this->fournisseur = $fournisseur;
 
         return $this;
     }
