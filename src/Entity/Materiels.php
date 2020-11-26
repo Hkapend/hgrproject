@@ -42,6 +42,11 @@ class Materiels
      */
     private $fournisseur;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lieuStock;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Materiels
     public function setFournisseur(?Fournisseur $fournisseur): self
     {
         $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    public function getLieuStock(): ?string
+    {
+        return $this->lieuStock;
+    }
+
+    public function setLieuStock(string $lieuStock): self
+    {
+        $this->lieuStock = $lieuStock;
 
         return $this;
     }

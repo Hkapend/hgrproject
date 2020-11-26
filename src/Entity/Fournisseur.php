@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FournisseurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FournisseurRepository::class)
@@ -19,6 +20,7 @@ class Fournisseur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, max=255)
      */
     private $description;
 

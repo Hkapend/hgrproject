@@ -22,9 +22,11 @@
     <list default="true" id="fb8b6ea8-7e0a-44a9-885f-1e09d16a2948" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Fournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fournisseur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Materiels.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Materiels.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/logistique/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,16 +159,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/dist/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/dist/img" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/patient" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -183,7 +186,19 @@
       <workItem from="1603267252646" duration="1445000" />
       <workItem from="1603290692073" duration="4786000" />
       <workItem from="1603634724804" duration="604000" />
-      <workItem from="1605883023306" duration="19887000" />
+      <workItem from="1605883023306" duration="25633000" />
+      <workItem from="1605952190941" duration="5564000" />
+      <workItem from="1606030345380" duration="964000" />
+      <workItem from="1606063367070" duration="4738000" />
+      <workItem from="1606078997112" duration="1883000" />
+      <workItem from="1606110688417" duration="32000" />
+      <workItem from="1606124049173" duration="7995000" />
+      <workItem from="1606148091782" duration="8252000" />
+      <workItem from="1606192266039" duration="5659000" />
+      <workItem from="1606293805807" duration="10884000" />
+      <workItem from="1606307628119" duration="4502000" />
+      <workItem from="1606325312131" duration="14711000" />
+      <workItem from="1606367786459" duration="283000" />
     </task>
     <servers />
   </component>
@@ -200,11 +215,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="372" y="169" width="611" height="401" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605907000318">
       <screen x="0" y="27" width="1366" height="686" />
     </state>
     <state x="372" y="169" width="611" height="401" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.686@0.27.1366.686" timestamp="1605907000318" />
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606341241398">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1366.686@0.27.1366.686" timestamp="1606341241398" />
+    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup" timestamp="1606299163245">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup/0.27.1366.686@0.27.1366.686" timestamp="1606299163245" />
   </component>
 </project>

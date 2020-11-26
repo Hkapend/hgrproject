@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ page_name }}! ✅ {% endblock %}
+
+{% block body %}
+    {% include 'extension/sidebar.html.twig' %}
+    <div class="main-footer">
+        <div class="container-fluid">
+            <div class="card-body">
+                <h4 class="heading-small text-lg-center mb-4">Gestion des Materiels de l'Hopital</h4>
+                <div class="pl-lg-4">
+                    <h5 class="heading-small text-lg-left mb-4">Modifier materiel</h5>
+                </div>
+                <div class="pl-lg-4">
+                    {{ form_start (form) }}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.description, { attr : { 'placeholder':'ex:Chaise',  'class':'form-control' }} )}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.type, {'attr':{ 'class':'form-control' }}) }}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.lieuStock, {'attr':{ 'placeholder':'ex: Contenaire', 'class':'form-control' }} )}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.observation, {'attr':{ 'placeholder':'ex: en bon etat', 'class':'form-control' }} )}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.activated,{'attr':{ 'class':'form-control' }} )}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                {{ form_row(form.fournisseur,{'attr':{ 'class':'form-control' }} )}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"></div><div class="col-lg-2"></div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-warning mb-xl-7" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                                    <i class="fa fa-edit text-white"></i>  Modifier
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content bg-warning">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="pl-lg-4">
+                                        <p class="text-dark text-center">
+                                            Voulez-vous porter une modification à cet enregistrement ?
+                                        </p>
+                                    </div>
+                                    <div class="pl-lg-4 text-center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Non
+                                        </button> <tr/><tr/><tr/>
+                                        <button type="submit" class="btn btn-outline-primary mb-xl-7">
+                                            Oui
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end (form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

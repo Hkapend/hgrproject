@@ -2,7 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Fournisseur;
+use App\Entity\Materiels;
+use App\Form\FournisseurType;
+use App\Form\MaterielsType;
+use App\Repository\FournisseurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LogistiqueController extends AbstractController
@@ -16,13 +24,65 @@ class LogistiqueController extends AbstractController
             'page_name' => 'Logistique',
         ]);
     }
+
+    /**
+     * @Route("/fournisseur", name="fournisseurs")
+     * @Route("/fournisseur/{id}", name="fournisseurs_edit")
+     * @param Fournisseur|null $_fournisseur
+     * @param Request $_request
+     * @param EntityManagerInterface $_manager
+     * @return Response
+     */
+    public function fournisseurs(Fournisseur $_fournisseur = null, Request $_request , EntityManagerInterface $_manager)
+    {
+        if(!$_fournisseur)
+        {
+            $_fournisseur = new Fournisseur();
+        }
+        $_form = $this->createForm(FournisseurType::class, $_fournisseur);
+        $_form->handleRequest($_request);
+        if ($_form->isSubmitted() && $_form->isValid())
+        {
+            $_manager->persist($_fournisseur);
+            $_manager->flush();
+            unset($_form, $_fournisseur);
+            $_fournisseur = new Fournisseur();
+            $_form = $this->createForm(FournisseurType::class, $_fournisseur);
+        }
+        $_afficher = $this->getDoctrine()->getRepository(Fournisseur::class)->findAll();
+        return $this->render('logistique/fournisseurs.html.twig',[
+            'page_name' => 'Gestion des fournisseurs',
+            'fournisseur'=>$_form->createView(),
+            'afficher'=>$_afficher,
+            'editfour' =>$_fournisseur->getId()!==null,
+        ]);
+    }
+
     /**
      * @Route("/materiels", name="materiels")
-     **/
-    public function materiels()
+     * @param Request $_request
+     * @param EntityManagerInterface $_manager
+     * @return Response
+     */
+    public function materiels(Request $_request, EntityManagerInterface $_manager)
     {
+        $_materiels = new Materiels();
+        $_affichemoi = $this->getDoctrine()->getRepository(Materiels::class)->findAll();
+        $_formMateriels = $this->createForm(MaterielsType::class, $_materiels);
+        $_formMateriels->handleRequest($_request);
+        if($_formMateriels->isSubmitted() && $_formMateriels->isValid())
+        {
+            $_manager->persist($_materiels);
+            $_manager->flush();
+            unset($_materiels, $_formMateriels);
+            $_materiels = new Materiels();
+            $_formMateriels = $this->createForm(MaterielsType::class, $_materiels);
+        }
         return $this->render('logistique/materiels.html.twig',[
            'page_name' => 'Materiels',
+            'form' => $_formMateriels->createView(),
+            'Affiche' => $_affichemoi,
+            'editmat' =>$_materiels->getId()!==null,
         ]);
     }
     /**
@@ -70,15 +130,7 @@ class LogistiqueController extends AbstractController
             'page_name' => 'Affecter materiels',
         ]);
     }
-    /**
-     * @Route("/fournisseur", name="fournisseurs")
-     **/
-    public function fournisseurs()
-    {
-        return $this->render('logistique/fournisseurs.html.twig',[
-            'page_name' => 'Gestion des fournisseurs',
-        ]);
-    }
+
     /**
      * @Route("/inventaire_global", name="inventaire_global")
      **/
