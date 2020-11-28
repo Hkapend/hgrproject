@@ -33,7 +33,6 @@ class MaterielsType extends AbstractType
             ->add('fournisseur', EntityType::class,[
                 'class'         =>  Fournisseur::class,
                 'choice_label'  => 'Description',
-                'label'         => 'Description',
                 'multiple'      =>  false,
             ]);
     }

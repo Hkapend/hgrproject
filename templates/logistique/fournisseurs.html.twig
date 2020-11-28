@@ -20,6 +20,7 @@
                 <div class="pl-lg-4">
                     {{ form_start (fournisseur) }}
                     <div class="row">
+                        <div class="col-lg-2"></div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     {{ form_row(fournisseur.description, { attr : { 'placeholder':'ex:UAC' ,  'class':'form-control' }} )}}
@@ -35,10 +36,14 @@
                                 {{ form_row(fournisseur.denomination, {'attr':{ 'placeholder':'ex:idNat548',  'class':'form-control' }} )}}
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-2"></div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                     {% if editfour %}
-                                        <button type="submit" class="btn btn-outline-warning mb-xl-7">
+                                        <button type="submit" class="btn btn-warning mb-xl-7">
                                                 <i class="fa fa-edit text-white"></i>  Modifier
                                         </button>
                                     {% else %}
@@ -49,14 +54,37 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content bg-warning">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="pl-lg-4">
+                                        <p class="text-dark text-center">
+                                            Etes-vous sûr de vouloir enregistrer ?
+                                        </p>
+                                    </div>
+                                    <div class="pl-lg-4 text-center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Non
+                                        </button> <tr/><tr/><tr/>
+                                        <button type="submit" class="btn btn-outline-primary mb-xl-7">
+                                            Oui
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {{ form_end (fournisseur) }}
                 </div>
-                <div class="col-10">
+                <div class="col-auto">
                     <div class="shadow">
                         <div class="card-header bg-transparent border-0">
                             <h3 class="text-dark mb-0">Liste des Fournisseurs</h3>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive text-center">
                             <table class="table align-items-center table-white table-flush">
                                 <thead class="thead-dark">
                                 <tr>

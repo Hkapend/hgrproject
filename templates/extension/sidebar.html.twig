@@ -74,13 +74,28 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ path ('proces') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book-medical"></i>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
                         <p>
-                            PV de Réception
+                            Pv Reception
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path ("proces") }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Création PV</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path ("afficheProces") }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gérer PV</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path ('affectation') }}" class="nav-link">

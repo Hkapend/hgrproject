@@ -4,10 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Fournisseur;
 use App\Entity\Materiels;
+use App\Entity\PvReception;
 use App\Form\FournisseurType;
 use App\Form\MaterielsType;
+use App\Form\ProcesType;
 use App\Repository\FournisseurRepository;
+use App\Repository\PvReceptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,6 +89,45 @@ class LogistiqueController extends AbstractController
             'editmat' =>$_materiels->getId()!==null,
         ]);
     }
+
+    /**
+     * @Route("/proces", name="proces")
+     * @param Request $_request
+     * @param EntityManagerInterface $_manager
+     * @return RedirectResponse|Response
+     */
+    public function pvReception(Request $_request, EntityManagerInterface $_manager)
+    {
+        $_proces = new PvReception();
+        $_formPv = $this->createForm(ProcesType::class,$_proces);
+        $_formPv->handleRequest($_request);
+        if ($_formPv->isSubmitted() && $_formPv->isValid())
+        {
+            $_manager->persist($_proces);
+            $_manager->flush();
+            return $this->redirectToRoute('afficheProces');
+        }
+        return $this->render('logistique/proces.html.twig',[
+            'page_name' => 'pv de réception',
+            'form_pv'=>$_formPv,
+            'editPv'=>$_proces->getId() !== null
+        ]);
+    }
+
+    /**
+     * @Route("/proces/affiche", name="afficheProces")
+     * @param PvReceptionRepository $_repopv
+     * @return RedirectResponse|Response
+     */
+    public function affichePV(PvReceptionRepository $_repopv)
+    {
+        $_repopv->findAll();
+        return $this->render('logistique/afficheProces.html.twig',[
+            'page_name' => 'pv de réception',
+           'affichePV'=>$_repopv
+        ]);
+    }
+
     /**
      * @Route("/stock", name="stock")
      **/
@@ -110,15 +153,6 @@ class LogistiqueController extends AbstractController
     {
         return $this->render('logistique/requipartielle.html.twig',[
             'page_name' => 'Etat de besoin',
-        ]);
-    }
-    /**
-     * @Route("/proces", name="proces")
-     **/
-    public function proces()
-    {
-        return $this->render('logistique/proces.html.twig',[
-            'page_name' => 'pv de réception',
         ]);
     }
     /**
