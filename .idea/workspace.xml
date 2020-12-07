@@ -20,15 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb8b6ea8-7e0a-44a9-885f-1e09d16a2948" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201120104234.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201120141009.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201121054650.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201125101214.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201126093631.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DeleteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DeleteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UpdateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UpdateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/FicheStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/FicheStock.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Fournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fournisseur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Materiels.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Materiels.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/PvReception.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PvReception.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/MaterielsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MaterielsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PvReceptionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PvReceptionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extension/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/navbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logistique/afficheProces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/afficheProces.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logistique/materiels_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/materiels_edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/logistique/proces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/proces.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/examples/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/examples/404.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,20 +175,26 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="db2&#10;mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/dist/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/logistique/test/assets" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller" />
+      <recent name="$PROJECT_DIR$/templates/logistique/test" />
+      <recent name="$PROJECT_DIR$/templates/logistique/test/assets" />
+      <recent name="$PROJECT_DIR$/templates/patient" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/logistique/test/assets" />
       <recent name="$PROJECT_DIR$/public/dist/img" />
       <recent name="$PROJECT_DIR$/templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/patient" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -202,6 +225,21 @@
       <workItem from="1606325312131" duration="14711000" />
       <workItem from="1606367786459" duration="6406000" />
       <workItem from="1606479715593" duration="16176000" />
+      <workItem from="1606583538586" duration="14472000" />
+      <workItem from="1606642374479" duration="18818000" />
+      <workItem from="1606796468511" duration="13540000" />
+      <workItem from="1606896297137" duration="14008000" />
+      <workItem from="1606927257109" duration="12779000" />
+      <workItem from="1606970132026" duration="11822000" />
+      <workItem from="1607056267143" duration="12191000" />
+      <workItem from="1607095581229" duration="12959000" />
+      <workItem from="1607141885877" duration="6211000" />
+      <workItem from="1607168101836" duration="219000" />
+      <workItem from="1607168958744" duration="2553000" />
+      <workItem from="1607234596276" duration="16305000" />
+      <workItem from="1607253527489" duration="4544000" />
+      <workItem from="1607264348748" duration="13090000" />
+      <workItem from="1607284343911" duration="21439000" />
     </task>
     <servers />
   </component>
@@ -221,17 +259,45 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="472" y="262" width="402" height="213" key="#Chrome_Settings" timestamp="1607251250156">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="472" y="262" width="402" height="213" key="#Chrome_Settings/0.27.1366.686@0.27.1366.686" timestamp="1607251250156" />
+    <state x="529" y="278" width="298" height="183" key="#DBGp_Proxy" timestamp="1607149281083">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="529" y="278" width="298" height="183" key="#DBGp_Proxy/0.27.1366.686@0.27.1366.686" timestamp="1607149281083" />
+    <state x="486" y="164" width="384" height="411" key="#Web_Browsers" timestamp="1607251251400">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="486" y="164" width="384" height="411" key="#Web_Browsers/0.27.1366.686@0.27.1366.686" timestamp="1607251251400" />
+    <state x="278" y="31" width="800" height="676" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606589197510">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="278" y="31" width="800" height="676" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.686@0.27.1366.686" timestamp="1606589197510" />
     <state x="372" y="169" width="611" height="401" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605907000318">
       <screen x="0" y="27" width="1366" height="686" />
     </state>
     <state x="372" y="169" width="611" height="401" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.686@0.27.1366.686" timestamp="1605907000318" />
-    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606488139135">
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606971316823">
       <screen x="0" y="27" width="1366" height="686" />
     </state>
-    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1366.686@0.27.1366.686" timestamp="1606488139135" />
-    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup" timestamp="1606299163245">
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1366.686@0.27.1366.686" timestamp="1606971316823" />
+    <state width="278" height="542" key="HiddenNamespacesPopup" timestamp="1607149350219">
       <screen x="0" y="27" width="1366" height="686" />
     </state>
-    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup/0.27.1366.686@0.27.1366.686" timestamp="1606299163245" />
+    <state width="278" height="542" key="HiddenNamespacesPopup/0.27.1366.686@0.27.1366.686" timestamp="1607149350219" />
+    <state x="164" y="27" width="1027" height="686" key="SettingsEditor" timestamp="1607095716300">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="164" y="27" width="1027" height="686" key="SettingsEditor/0.27.1366.686@0.27.1366.686" timestamp="1607095716300" />
+    <state width="498" height="447" key="SwitcherDM" timestamp="1606915329926">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state width="498" height="447" key="SwitcherDM/0.27.1366.686@0.27.1366.686" timestamp="1606915329926" />
+    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup" timestamp="1607149441388">
+      <screen x="0" y="27" width="1366" height="686" />
+    </state>
+    <state x="346" y="34" width="672" height="678" key="search.everywhere.popup/0.27.1366.686@0.27.1366.686" timestamp="1607149441388" />
   </component>
 </project>

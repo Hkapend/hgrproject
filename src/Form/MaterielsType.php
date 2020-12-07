@@ -22,7 +22,6 @@ class MaterielsType extends AbstractType
                     'Stockable'=>'Stockable'
                 ),
             ))
-            ->add('lieuStock')
             ->add('observation')
             ->add('activated',ChoiceType::class, array(
                 'choices'=>array(

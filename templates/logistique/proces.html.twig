@@ -17,61 +17,126 @@
                     </i>
                 </h4>
                 <div class="pl-lg-4">
-                    {{ form_start (form_pv) }}
-                    <div class="row">
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.description, { attr : { 'placeholder':'ex:Table' ,  'class':'form-control' }} )}}
+                    {#{ form_start (form_pv) }#}
+                    <form action="" method="post" name="add_name" id="add_name">
+                        <table class="table" id="dynamic_field">
+                            <tr>
+                                <td>
+                                    <select id="description" class="form-control name_list" name="description[]">
+                                        <option >description</option>
+                                        {% for selection in affiche %}
+                                            <option value="{{ selection.id }}">{{ selection.description }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="number" id="recu" class="form-control name_list" placeholder="Quantité" name="quantite[]"></td>
+                                <td><input type="text" id="marque" class="form-control name_list" placeholder="Marque" name="marque[]"></td>
+                                <td><input type="text" id="observation" class="form-control name_list" placeholder="Observation" name="observation[]"></td>
+                                <td><button type="button" name="add" id="add" class="btn btn-outline-success">+</button></td>
+                            </tr>
+                        </table>
+                        <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    {% if editPv %}
+                                        <input type="submit" id="submit" name="submit" class="btn btn-warning mb-xl-7 fa fa-edit text-white" value="Modifier">
+                                    {% else %}
+                                        <button type="button" class="btn btn-primary mb-xl-7" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                                            <i class="fa fa-tools text-white"></i>  Valider
+                                        </button>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.qteDemande, {'attr':{ 'placeholder':'ex: KAJAKA' ,  'class':'form-control', 'label':'Quantité demandée'}}) }}
+                        <!-- debut du modal-->
+                        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="heading-small text-lg-center">Enregistrement</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="pl-lg-4">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <input type="number" id="numero" class="form-control name_list" placeholder="numéro du pv" name="numero">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <input type="date" id="date" class="form-control name_list" placeholder="ex: 12" name="date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3"></div><div class="col-lg-3"></div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-outline-primary mb-xl-7" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                                                    <i class="fa fa-save text-white"></i>  Enregistrer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{ form_end (form) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.qteRecu, {'attr':{ 'placeholder':'ex:idNat548',  'class':'form-control', 'label':'Quantité récu' }} )}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.marque, {'attr':{ 'placeholder':'ex:Bureau',  'class':'form-control' }} )}}
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.observation, {'attr':{ 'placeholder':'ex:Bonne Réception',  'class':'form-control' }} )}}
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                {{ form_row(form_pv.createdAt, {'attr':{ 'class':'form-control' }} )}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                {% if editPv %}
-                                    <button type="submit" class="btn btn-warning mb-xl-7">
-                                        <i class="fa fa-edit text-white"></i>  Modifier
-                                    </button>
-                                {% else %}
-                                    <button type="submit" class="btn btn-outline-primary mb-xl-7">
-                                        <i class="fa fa-save text-white"></i>  Enregistrer
-                                    </button>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {{ form_end(form_pv) }}
+                        <!-- fin du modal-->
+
+                        {#{ form_end(form_pv) }#}
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var i = 1;
+            $('#add').click(function () {
+                i++;
+                $('#dynamic_field').append('<tr id="row'+i+'">\n' +
+                    '                                <td>\n' +
+                    '                                    <select id="description" class="form-control name_list" name="description[]">\n' +
+                    '                                        <option >description</option>\n' +
+                    '                                        {% for selection in affiche %}\n' +
+                    '                                            <option value="{{ selection.id }}">{{ selection.description }}</option>\n' +
+                    '                                        {% endfor %}\n' +
+                    '                                    </select>\n' +
+                    '                                </td>\n' +
+                    '                                <td><input type="number" id="recu" class="form-control name_list" placeholder="Qté Réçu" name="recu[]"></td>\n' +
+                    '                                <td><input type="text" id="marque" class="form-control name_list" placeholder="Marque" name="marque[]"></td>\n' +
+                    '                                <td><input type="text" id="observation" class="form-control name_list" placeholder="Observation" name="observation[]"></td>\n' +
+                    '                                <td><button type="button" name="remove" id="'+i+'" class="btn btn-outline-danger btn_remove">X</button></td>\n' +
+                    '                            </tr>'
+                );
+            });
+            $(document).on('click', '.btn_remove', function () {
+                var button_id = $(this).attr("id");
+                $("#row"+button_id+"").remove();
+            });
+            $('#submit').click(function () {
+                $.ajax({
+                    url:"/proces",
+                    method:"POST",
+                    type:"POST",
+                    data:$('#add_name').serialize(),
+                    success:function (data) {
+                        $('#add_name')[0].reset();
+                    }
+                })
+            });
+            console.log(data);
+        });
+    </script>
 {% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ page_name }}! ✅ {% endblock %}
+
+{% block body %}
+    {% include 'extension/sidebar.html.twig' %}
+    <div class="container-fluid">
+        <div class="card-body">
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="text-center">
+                            <h1> PV de Réception N° {{ affiche_num }}</h1>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Main content -->
+                                <div class="invoice p-3 mb-3">
+                                    <!-- title row -->
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <h5 class="text-center">
+                                                REPUBLIQUE DEMOCRATIQUE DU CONGO <br> PROVINCE DU LUALABA
+                                            </h5>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1"></div>
+                                        <div class="col-3">
+                                            <div class="image">
+                                                <img src="{{ asset('dist/img/download.png') }}" class="img-lg elevation-1" alt="User Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 text-center">
+                                            DIVISION PROVINCIALE DE LA SANTE <br> HOPITAL GENERAL DE REFERENCE MWANGEJI
+                                        </div>
+                                    </div>
+                                    <div class="text-xl-center">
+                                        <p><strong><br><br>PV DE RECEPTION N° {{ affiche_num }}</strong> </p>
+                                    </div>
+                                    <!-- info row -->
+                                    <div class="row invoice-info">
+                                        <div class="col-sm-6 invoice-col">
+                                            Nous soussignons aux fonctions au regard de nos noms:
+                                            <address>
+                                                1:.........................................................................................<br>
+                                                2:.........................................................................................<br>
+                                            </address>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <div class="row invoice-info">
+                                        <div class="col-sm invoice-col">
+                                            Attestions avoir reçu de <strong>{% for affiche in fournisseurs %} {{ affiche.description.fournisseur.description }} , {% endfor %}...........................</strong>;
+                                            <br>Dans le Tableau ci-dessous les .........................................................................................<br>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <!-- Table row -->
+                                    <div class="row">
+                                        <div class="col-12 table-responsive text-center">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>N°</th>
+                                                    <th>Designation</th>
+                                                    <th>Quantité</th>
+                                                    <th>Marque</th>
+                                                    <th>Onservation</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for affichemoi in affichePV %}
+                                                <tr>
+                                                        <td>{{ 1 }}</td>
+                                                        <td>{{ affichemoi.description }}</td>
+                                                        <td>{{ affichemoi.qte_recu }}</td>
+                                                        <td>{{ affichemoi.marque }}</td>
+                                                        <td>{{ affichemoi.observation }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="text-muted well well-sm shadow-none float-right">
+                                                Fait à Kolwezi, le {{ affiche_date | date ('d/m/Y') }} à {{ affiche_date | date ('H:i') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- accepted payments column -->
+                                        <div class="col-4">
+                                            <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                                                Noms, Fonction & Signature
+                                            </p>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-4 text-center">
+                                            <p class="lead"><strong>L'Equipe de réception</strong></p>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">Noms, Fonction & Signature</p>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <br><br><br>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <p class="lead"><strong>VISA DU MEDECIN DIRECTEUR</strong></p>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <!-- this row will not appear when printing -->
+                                    <div class="row no-print">
+                                        <div class="col-12">
+                                            <button type="button" id="print" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                                            <button type="button" class="btn btn-success float-right"><i class="fas fa-send-o"></i> Approuver </button>
+                                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                                <i class="fas fa-file-pdf"></i> Generer un PDF
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.invoice -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#add').click(function () {
+                window.print();
+            });
+        });
+    </script>
+{% endblock %}

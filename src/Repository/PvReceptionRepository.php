@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\PvReception;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,33 @@ class PvReceptionRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return PvReception[] Returns an array of PvReception objects
+     * @throws \Doctrine\DBAL\Driver\Exception|Exception
+     */
+    public function findnumpv()
+    {
+        //$_request = $this->getEntityManager()->createQuery("SELECT DISTINCT(*) FROM App\Entity\PvReception a GROUP BY a.numpv");
+        $_request = $this->getEntityManager()->getConnection()->prepare('SELECT DISTINCT `id`, `numpv`,`valeur`, `created_at` FROM `pv_reception` GROUP BY `numpv`');
+        $_request->execute();
+        return $_request->fetchAll();
+    }
+
+    /**
+     * @param $_valeur
+     * @return PvReception[] Returns an array of PvReception objects
+     * @throws Exception
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function find_detail($_valeur)
+    {
+        $_request = $this->getEntityManager()->getConnection()->prepare('
+            SELECT `description`, `qte_recu`, `marque`,`pv_reception`.`created_at`, `pv_reception`.`observation`, `numpv` 
+                FROM `pv_reception`, `materiels` 
+                WHERE `valeur` = :_valeur AND `pv_reception`.`description_id`  = `materiels`.`id`
+        ');
+        $_request->execute(array('_valeur' => $_valeur));
+        return $_request->fetchAll();
+    }
 }

@@ -59,6 +59,11 @@ class FicheStock
      */
     private $pv;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lieuStock;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,6 +161,18 @@ class FicheStock
     public function setPv(?PvReception $pv): self
     {
         $this->pv = $pv;
+
+        return $this;
+    }
+
+    public function getLieuStock(): ?string
+    {
+        return $this->lieuStock;
+    }
+
+    public function setLieuStock(string $lieuStock): self
+    {
+        $this->lieuStock = $lieuStock;
 
         return $this;
     }

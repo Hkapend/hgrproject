@@ -90,41 +90,40 @@ class LogistiqueController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/proces", name="proces")
-     * @param Request $_request
-     * @param EntityManagerInterface $_manager
-     * @return RedirectResponse|Response
-     */
-    public function pvReception(Request $_request, EntityManagerInterface $_manager)
-    {
-        $_proces = new PvReception();
-        $_formPv = $this->createForm(ProcesType::class,$_proces);
-        $_formPv->handleRequest($_request);
-        if ($_formPv->isSubmitted() && $_formPv->isValid())
-        {
-            $_manager->persist($_proces);
-            $_manager->flush();
-            return $this->redirectToRoute('afficheProces');
-        }
-        return $this->render('logistique/proces.html.twig',[
-            'page_name' => 'pv de réception',
-            'form_pv'=>$_formPv,
-            'editPv'=>$_proces->getId() !== null
-        ]);
-    }
 
     /**
      * @Route("/proces/affiche", name="afficheProces")
-     * @param PvReceptionRepository $_repopv
      * @return RedirectResponse|Response
      */
-    public function affichePV(PvReceptionRepository $_repopv)
+    public function affichePV()
     {
-        $_repopv->findAll();
+        $_repo = $this->getDoctrine()->getRepository(PvReception::class)->findnumpv();
         return $this->render('logistique/afficheProces.html.twig',[
             'page_name' => 'pv de réception',
-           'affichePV'=>$_repopv
+           'affichePV'=>$_repo
+        ]);
+    }
+
+
+    public function detail_PV(Request $_request)
+    {
+
+        $_valeur = $this->getDoctrine()->getRepository(PvReception::class)->findnumpv();
+        $_verif = $_valeur[1]['valeur'];
+        $_val = $_request->get('_route_params');
+        $_repo = $this->getDoctrine()->getRepository(PvReception::class)->find_detail($_val['valeur']);
+        $_numero_pv = $_repo[0]['numpv'];
+        $_date = $_repo[0]['created_at'];
+        dump($_repo, $_numero_pv);
+        //$_fourbymater = $this->getDoctrine()->getRepository(PvReception::class)->findBy(array(distinct=>true));
+        $_fourbymater = $this->getDoctrine()->getRepository(PvReception::class)->findAll();
+
+        return $this->render('logistique/detail_pv.html.twig',[
+            'page_name' => 'pv de réception',
+            'affichePV'=>$_repo,
+            'affiche_num'=>$_numero_pv,
+            'affiche_date'=>$_date,
+            'fournisseurs'=>$_fourbymater
         ]);
     }
 

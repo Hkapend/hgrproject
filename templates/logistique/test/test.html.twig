@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ page_name }}! ✅ {% endblock %}
+
+{% block body %}
+    {% include 'extension/sidebar.html.twig' %}
+    <div class="main-footer">
+        <div class="container-fluid">
+            <div class="card-body">
+                <h4 class="heading-small text-lg-center mb-4">
+                    <i class="fa fa-briefcase-medicale text-muted">
+                        {% if editPv %}
+                            Modification du Proces Verbal
+                        {% else %}
+                            Enregistrement du Proces Verbal
+                        {% endif %}
+                    </i>
+                </h4>
+                <div class="pl-lg-4">
+                    {#{ form_start (form_pv) }#}
+                    <form action="" method="post" name="add_name" id="add_name">
+                        <table class=" table" id="dynamic_field">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="sort" data-sort="">Description</th>
+                                <th scope="col" class="sort" data-sort="">Quantité</th>
+                                <th scope="col" class="sort" data-sort="">Marque</th>
+                                <th scope="col" class="sort" data-sort="">Observation</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <select id="description" class="form-control name_list" name="description[]">
+                                        {% for selection in affiche %}
+                                            <option value="{{ selection.id }}">{{ selection.description }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="number" id="recu" class="form-control name_list" placeholder="Quantité" name="quantite[]"></td>
+                                <td><input type="text" id="marque" class="form-control name_list" placeholder="Marque" name="marque[]"></td>
+                                <td><input type="text" id="observation" class="form-control name_list" placeholder="Observation" name="observation[]"></td>
+                                <td><button type="button" name="add" id="add" class="btn btn-primary">+</button></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                        <center>
+                            <div class="form-group">
+                                {% if editPv %}
+                                    <input type="submit" id="submit" name="submit" class="btn btn-warning mb-xl-7 fa fa-edit text-white" value="Modifier">
+                                {% else %}
+                                    <button type="button" class="btn btn-primary mb-xl-7" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                                        <i class="fa fa-tools text-white"></i>  Valider
+                                    </button>
+                                {% endif %}
+                            </div>
+                        </center>
+                        <!-- debut du modal-->
+                        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="heading-small text-lg-center">Enregistrement</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="pl-lg">
+                                            <div class="row">
+                                                <div class="col-lg">
+                                                    <div class="form-group">
+                                                        <input type="text" id="numero" class="form-control name_list" placeholder="numéro du pv" name="numero">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg">
+                                                    <div class="form-group">
+                                                        <input type="date" id="date" class="form-control name_list" name="date">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg">
+                                                    <div class="form-group">
+                                                        <input type="number" id="valeur" class="form-control name_list" placeholder="Saisir uniquement un chiffre aléatoire" name="valeur">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <div class="form-group">
+                                            <button type="submit" id="submit" name="valider" class="btn btn-outline-primary mb-xl-7" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                                                <i class="fa fa-save text-white"></i>  Enregistrer
+                                            </button>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin du modal-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var i = 1;
+            $.ajax({
+                url:"/pvreception",
+                method:"POST",
+                data:$('#add_name').serialize(),
+                success:function (data) {
+                    console.log('succesfully');
+                }
+            });
+            $('#add').click(function () {
+                i++;
+                $('#dynamic_field').append('<tr id="row'+i+'">\n' +
+            '                                <td>\n' +
+            '                                    <select id="description" class="form-control name_list" name="description[]">\n' +
+            '                                        {% for selection in affiche %}\n' +
+            '                                            <option value="{{ selection.id }}">{{ selection.description }}</option>\n' +
+            '                                        {% endfor %}\n' +
+            '                                    </select>\n' +
+            '                                </td>\n' +
+            '                                <td><input type="number" id="recu" class="form-control name_list" placeholder="Quantité" name="quantite[]"></td>\n' +
+            '                                <td><input type="text" id="marque" class="form-control name_list" placeholder="Marque" name="marque[]"></td>\n' +
+            '                                <td><input type="text" id="observation" class="form-control name_list" placeholder="Observation" name="observation[]"></td>\n' +
+            '                                <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_danger">X</button></td>\n' +
+            '                            </tr>'
+                );
+            });
+            $(document).on('click', '.btn_danger', function () {
+                var button_id = $(this).attr("id");
+                $("#row"+button_id+"").remove();
+            });
+            $('#submit').click(function () {
+                $.ajax({
+                    url:"/pvreception",
+                    method:"POST",
+                    data:$('#add_name').serialize(),
+                    success:function (data) {
+                        $('#add_name')[0].reset();
+                    }
+                })
+            });
+        });
+    </script>
+{% endblock %}

@@ -18,16 +18,6 @@ class PvReception
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $designation;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $qteDemande;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $qteRecu;
@@ -47,34 +37,27 @@ class PvReception
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Materiels::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numpv;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $valeur;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDesignation(): ?string
-    {
-        return $this->designation;
-    }
-
-    public function setDesignation(string $designation): self
-    {
-        $this->designation = $designation;
-
-        return $this;
-    }
-
-    public function getQteDemande(): ?int
-    {
-        return $this->qteDemande;
-    }
-
-    public function setQteDemande(int $qteDemande): self
-    {
-        $this->qteDemande = $qteDemande;
-
-        return $this;
-    }
 
     public function getQteRecu(): ?int
     {
@@ -120,6 +103,42 @@ class PvReception
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getDescription(): ?Materiels
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?Materiels $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getNumpv(): ?string
+    {
+        return $this->numpv;
+    }
+
+    public function setNumpv(string $numpv): self
+    {
+        $this->numpv = $numpv;
+
+        return $this;
+    }
+
+    public function getValeur(): ?int
+    {
+        return $this->valeur;
+    }
+
+    public function setValeur(int $valeur): self
+    {
+        $this->valeur = $valeur;
 
         return $this;
     }

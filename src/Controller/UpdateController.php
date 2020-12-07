@@ -51,7 +51,7 @@ class UpdateController extends AbstractController
      * @param PvReception $_proces
      * @param Request $_request
      * @param EntityManagerInterface $_manager
-     * @return RedirectResponse|Response
+     * @return RedirectResponse|Re/bootstrap/3.3.6/js/bootstrapp.min.jssponse
      */
     public  function editProces(PvReception $_proces, Request $_request, EntityManagerInterface $_manager)
     {
