@@ -20,32 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb8b6ea8-7e0a-44a9-885f-1e09d16a2948" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/hgrproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hgrproject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201120104234.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201120141009.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201121054650.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201125101214.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201126093631.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DeleteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DeleteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201204162352.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201204162352.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UpdateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UpdateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/FicheStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/FicheStock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Fournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fournisseur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Materiels.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Materiels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PvReception.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PvReception.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MaterielsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MaterielsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PvReceptionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PvReceptionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extension/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/name.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/name.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Affectation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Affectation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AffectationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AffectationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logistique/affectation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/affectation.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/logistique/afficheProces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/afficheProces.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/fournisseurs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/materiels.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/logistique/materiels_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/materiels_edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/logistique/proces.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logistique/proces.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/examples/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/examples/404.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +151,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jBAjtOleClqwYmLZ9073UAAHrT" />
@@ -239,7 +231,10 @@
       <workItem from="1607234596276" duration="16305000" />
       <workItem from="1607253527489" duration="4544000" />
       <workItem from="1607264348748" duration="13090000" />
-      <workItem from="1607284343911" duration="21439000" />
+      <workItem from="1607284343911" duration="23232000" />
+      <workItem from="1607311849252" duration="8792000" />
+      <workItem from="1607352478893" duration="16256000" />
+      <workItem from="1607390240420" duration="5963000" />
     </task>
     <servers />
   </component>
@@ -279,10 +274,10 @@
       <screen x="0" y="27" width="1366" height="686" />
     </state>
     <state x="372" y="169" width="611" height="401" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.686@0.27.1366.686" timestamp="1605907000318" />
-    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606971316823">
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607356203881">
       <screen x="0" y="27" width="1366" height="686" />
     </state>
-    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1366.686@0.27.1366.686" timestamp="1606971316823" />
+    <state x="416" y="128" width="524" height="483" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1366.686@0.27.1366.686" timestamp="1607356203881" />
     <state width="278" height="542" key="HiddenNamespacesPopup" timestamp="1607149350219">
       <screen x="0" y="27" width="1366" height="686" />
     </state>

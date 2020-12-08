@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Affectation;
+use App\Entity\PvReception;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +49,35 @@ class AffectationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Affectation[] Returns an array of PvReception objects
+     * @throws \Doctrine\DBAL\Driver\Exception|Exception
+     */
+    public function findnumaffect()
+    {
+        //$_request = $this->getEntityManager()->createQuery("SELECT DISTINCT(*) FROM App\Entity\PvReception a GROUP BY a.numpv");
+        $_request = $this->getEntityManager()->getConnection()->prepare('SELECT DISTINCT `id`, `num_affectation`,`valeur`, `created_at` FROM `affectation` GROUP BY `num_affectation`');
+        $_request->execute();
+        return $_request->fetchAll();
+    }
+
+
+    /**
+     * @param $_valeur
+     * @return PvReception[] Returns an array of PvReception objects
+     * @throws Exception
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function find_affectation($_valeur)
+    {
+        $_request = $this->getEntityManager()->getConnection()->prepare('
+            SELECT `materiels`.`description` AS descript, `qte`, `affectation`.`created_at`, `affectation`.`observation`, `num_affectation` ,`service`.`description` 
+            FROM `affectation`, `materiels` ,`service` 
+            WHERE `valeur` = :_valeur AND `affectation`.`materiel_id` = `materiels`.`id` AND `service`.`id` = `affectation`.`service_id`
+        ');
+        $_request->execute(array('_valeur' => $_valeur));
+        return $_request->fetchAll();
+    }
+
 }

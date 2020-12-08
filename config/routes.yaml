@@ -11,3 +11,13 @@ detail_pv:
     path: /proces/affiche/{valeur}
     controller: App\Controller\LogistiqueController:detail_PV
     methods: [POST, GET]
+
+detail_affectation:
+    path: /affectation/{valeur}
+    controller: App\Controller\LogistiqueController:detail_affectation
+    methods: [POST, GET]
+
+affectation:
+    path: /affectation
+    controller: App\Controller\name::affectation_materiels
+    methods: [POST, GET]

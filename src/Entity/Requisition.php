@@ -27,6 +27,17 @@ class Requisition
      */
     private $CreatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $observation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Service::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $service;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +63,30 @@ class Requisition
     public function setCreatedAt(\DateTimeInterface $CreatedAt): self
     {
         $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getObservation(): ?string
+    {
+        return $this->observation;
+    }
+
+    public function setObservation(string $observation): self
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): self
+    {
+        $this->service = $service;
 
         return $this;
     }

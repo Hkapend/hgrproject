@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Affectation;
 use App\Entity\Materiels;
 use App\Entity\PvReception;
+use App\Entity\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,7 +51,42 @@ class name extends AbstractController
             ]);
     }
 
-    /**
-     * @Route("affiche_proces", name="")
-     */
+
+    public function affectation_materiels(Affectation $_affectation = null, Request $_request, EntityManagerInterface $_manager )
+    {
+        if(!$_affectation)
+        {
+            $_affectation= new Affectation();
+        }
+        if(isset($_POST["valider"]))
+        {
+            $_number = $_POST["description"];
+            $_i = 0;
+            foreach ($_number as $_i => $value)
+            {
+                $_date = \DateTime::createFromFormat('Y-m-d', $_POST["date"]);
+                $_foreign = $this->getDoctrine()->getRepository(Materiels::class)->find($_POST["description"][$_i]);
+                $_foreignServices = $this->getDoctrine()->getRepository(Service::class)->find($_POST["service"]);
+                $_affectation->setCreatedAt($_date)->setMateriel($_foreign)
+                    ->setService($_foreignServices)->setObservation($_POST["observation"][$_i])
+                    ->setNumAffectation($_POST["numero"])->setQte($_POST["quantite"][$_i])->setValeur($_POST["valeur"]);
+                $_manager->persist($_affectation);
+                $_manager->flush();
+                unset($_affectation);
+                $_affectation= new Affectation();
+            }
+            dump($_affectation);
+        }
+        $_affectation = $this->getDoctrine()->getRepository(Affectation::class)->findnumaffect();
+        $_afficheServ = $this->getDoctrine()->getRepository(Service::class)->findAll();
+        $_afficheMat = $this->getDoctrine()->getRepository(Materiels::class)->findAll();
+        return $this->render('logistique/affectation.html.twig',[
+            'page_name' => 'Affecter materiels',
+            'afficheAffect' => $_affectation,
+            'affiche' => $_afficheMat,
+            'selectServices'=>$_afficheServ,
+        ]);
+    }
+
+
 }

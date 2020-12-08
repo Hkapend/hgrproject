@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Affectation;
 use App\Entity\Fournisseur;
 use App\Entity\Materiels;
 use App\Entity\PvReception;
+use App\Entity\Service;
 use App\Form\FournisseurType;
 use App\Form\MaterielsType;
 use App\Form\ProcesType;
 use App\Repository\FournisseurRepository;
 use App\Repository\PvReceptionRepository;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +30,23 @@ class LogistiqueController extends AbstractController
     {
         return $this->render('logistique/index.html.twig', [
             'page_name' => 'Logistique',
+        ]);
+    }
+    public function pdfGenerate($_pageName)
+    {
+        $_option = new Options();
+        $_option->set('defaultFont','Roboto');
+        $_dompdf = new Dompdf($_option);
+        $_data = array(
+            'headline'=>'my headline'
+        );
+        $_html = $this->renderView($_pageName, [
+            'headline'=>'###################'
+        ]);
+        $_dompdf->loadHtml($_html);
+        $_dompdf->setPaper('A4', 'Portrait')->render();
+        $_dompdf->stream($_pageName.'.pdf', [
+            "Attachment"=>false
         ]);
     }
 
@@ -98,7 +119,7 @@ class LogistiqueController extends AbstractController
     public function affichePV()
     {
         $_repo = $this->getDoctrine()->getRepository(PvReception::class)->findnumpv();
-        return $this->render('logistique/afficheProces.html.twig',[
+        return $this->render('logistique/detail_affectation.html.twig',[
             'page_name' => 'pv de réception',
            'affichePV'=>$_repo
         ]);
@@ -107,9 +128,6 @@ class LogistiqueController extends AbstractController
 
     public function detail_PV(Request $_request)
     {
-
-        $_valeur = $this->getDoctrine()->getRepository(PvReception::class)->findnumpv();
-        $_verif = $_valeur[1]['valeur'];
         $_val = $_request->get('_route_params');
         $_repo = $this->getDoctrine()->getRepository(PvReception::class)->find_detail($_val['valeur']);
         $_numero_pv = $_repo[0]['numpv'];
@@ -126,6 +144,49 @@ class LogistiqueController extends AbstractController
             'fournisseurs'=>$_fourbymater
         ]);
     }
+
+    public function detail_affectation(Request $_request)
+    {
+        $_val = $_request->get('_route_params');
+        $_valeur = $_val['valeur'];
+        $_reposit = $this->getDoctrine()->getRepository(Affectation::class)->find_affectation($_valeur);
+        $_numero_aff = $_reposit[0]['num_affectation'];
+        $_date = $_reposit[0]['created_at'];
+        $_service = $_reposit[0]['description'];
+        dump($_reposit, $_numero_aff);
+        if (isset($_POST['pdf']))
+        {
+            $_url = 'logistique/detail_affectation.html.twig';
+            //$this->pdfGenerate($_url);
+        }
+        return $this->render('logistique/detail_affectation.html.twig',[
+            'page_name' => 'Affecter materiels',
+            'affichePV'=>$_reposit,
+            'affiche_num'=>$_numero_aff,
+            'affiche_date'=>$_date,
+            'description'=>$_service,
+        ]);
+    }
+
+    /**
+     * @Route("/inventaire_global", name="inventaire_global")
+     **/
+    public function inventaire_global()
+    {
+        return $this->render('logistique/inventaire_global.html.twig',[
+            'page_name' => 'Global Inventaire',
+        ]);
+    }
+    /**
+     * @Route("inventaire_partiel", name="inventaire_partiel")
+     **/
+    public function inventaire_partiel()
+    {
+        return $this->render('logistique/inventaire_partiel.html.twig',[
+            'page_name' => 'Inventaire partiel',
+        ]);
+    }
+
 
     /**
      * @Route("/stock", name="stock")
@@ -154,32 +215,5 @@ class LogistiqueController extends AbstractController
             'page_name' => 'Etat de besoin',
         ]);
     }
-    /**
-     * @Route("/affectation", name="affectation")
-     **/
-    public function affectation_materiels()
-    {
-        return $this->render('logistique/affectation.html.twig',[
-            'page_name' => 'Affecter materiels',
-        ]);
-    }
 
-    /**
-     * @Route("/inventaire_global", name="inventaire_global")
-     **/
-    public function inventaire_global()
-    {
-        return $this->render('logistique/inventaire_global.html.twig',[
-            'page_name' => 'Global Inventaire',
-        ]);
-    }
-    /**
-     * @Route("inventaire_partiel", name="inventaire_partiel")
-     **/
-    public function inventaire_partiel()
-    {
-        return $this->render('logistique/inventaire_partiel.html.twig',[
-            'page_name' => 'Inventaire partiel',
-        ]);
-    }
 }

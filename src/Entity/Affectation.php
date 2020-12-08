@@ -35,7 +35,7 @@ class Affectation
 
     /**
      * @ORM\ManyToOne(targetEntity=FicheStock::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $stock;
 
@@ -44,6 +44,21 @@ class Affectation
      * @ORM\JoinColumn(nullable=false)
      */
     private $service;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numAffectation;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $valeur;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $observation;
 
     public function getId(): ?int
     {
@@ -106,6 +121,42 @@ class Affectation
     public function setService(?Service $service): self
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getNumAffectation(): ?string
+    {
+        return $this->numAffectation;
+    }
+
+    public function setNumAffectation(string $numAffectation): self
+    {
+        $this->numAffectation = $numAffectation;
+
+        return $this;
+    }
+
+    public function getValeur(): ?int
+    {
+        return $this->valeur;
+    }
+
+    public function setValeur(int $valeur): self
+    {
+        $this->valeur = $valeur;
+
+        return $this;
+    }
+
+    public function getObservation(): ?string
+    {
+        return $this->observation;
+    }
+
+    public function setObservation(string $observation): self
+    {
+        $this->observation = $observation;
 
         return $this;
     }
